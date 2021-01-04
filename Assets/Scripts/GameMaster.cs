@@ -11,7 +11,9 @@ public class GameMaster : MonoBehaviour
     private void Start()
     {
         score = 0;
+        
         scoreText.text = "Score:" + score.ToString();
+        scoreText.fontSize = 85;
     }
 
     // Update is called once per frame
