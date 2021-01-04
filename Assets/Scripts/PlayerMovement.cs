@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
 	
 	float _speed;
 	Vector2 _targetPosition;
+	private AudioSource _eat;
 	
 	public float secondsToMaxDifficulty;
 	
@@ -18,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
 	    _time = 0;
+	    _eat = GetComponents<AudioSource>()[1];
         _targetPosition = RandomPatrol.GetRandomPos();
     }
 
@@ -57,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
 		
 		if(collision.CompareTag("Cake"))
 		{
+			_eat.Play();
 			GameObject.Find("ScoreCanvas").GetComponent<GameMaster>().UpdateScore();
 			//Instantiate(collideEffect, transform.position, quaternion.identity);
 			GameObject.FindGameObjectWithTag("Cake").GetComponent<CakeMovement>().SetRandomPos();
