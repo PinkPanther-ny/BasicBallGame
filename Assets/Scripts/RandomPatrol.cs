@@ -63,12 +63,8 @@ public class RandomPatrol : MonoBehaviour
 		    }
     }
 
-	public Vector2 GetRandomPos() {
+	public static Vector2 GetRandomPos() {
 		
-		
-		/*return new Vector2(
-			(Random.Range(minX,maxX) + transform.position.x) * percentageRandomPos, 
-			(Random.Range(minY,maxY) + transform.position.y) * percentageRandomPos);*/
 		return new Vector2(
 			Random.Range(minX,maxX), 
 			Random.Range(minY,maxY));
@@ -77,18 +73,35 @@ public class RandomPatrol : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision){
 		
-		if(collision.CompareTag("Balls"))
+		
+		if(collision.CompareTag("BadBalls"))
+		{
+			_targetPosition = GetRandomPos();
+		}
+		
+		if(collision.CompareTag("Balls") || collision.CompareTag("Cake"))
 		{
 			_crash.Play();
 			Instantiate(collideEffect, transform.position, quaternion.identity);
+			
+			
+			foreach (GameObject ball in (GameObject.FindGameObjectsWithTag("Balls")))
+			{
+				ball.GetComponent<PlayerMovement>().enabled = false;
+				ball.GetComponent<DragAndDrop>().enabled = false;
+			}
+			
+			foreach (GameObject ball in GameObject.FindGameObjectsWithTag("BadBalls"))
+			{
+				ball.GetComponent<RandomPatrol>().enabled = false;
+				ball.GetComponent<DragAndDrop>().enabled = false;
+			}
+			
 			Invoke("Lose", 2f);
 			
-			foreach (GameObject ball in GameObject.FindGameObjectsWithTag("Balls"))
-			{
-				ball.GetComponent<DragAndDrop>().enabled = false;
-				ball.GetComponent<RandomPatrol>().enabled = false;
-			}
+
 		}
+		
 	}
 
 	float GetDifficultyPercent()
