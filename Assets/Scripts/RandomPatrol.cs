@@ -73,6 +73,7 @@ public class RandomPatrol : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision){
 		
+		if(!IsGamingScene()){return;}
 		
 		if(collision.CompareTag("BadBalls"))
 		{
@@ -83,7 +84,6 @@ public class RandomPatrol : MonoBehaviour
 		{
 			_crash.Play();
 			Instantiate(collideEffect, transform.position, quaternion.identity);
-			
 			
 			foreach (GameObject ball in (GameObject.FindGameObjectsWithTag("Balls")))
 			{
@@ -113,5 +113,10 @@ public class RandomPatrol : MonoBehaviour
 	{
 		SceneManager.LoadScene("Scenes/LoseScene");
 	}
-	
+
+	bool IsGamingScene()
+	{
+		// Used in menu scene
+		return SceneManager.GetActiveScene() != SceneManager.GetSceneByName("Scenes/GameScene");
+	}
 }

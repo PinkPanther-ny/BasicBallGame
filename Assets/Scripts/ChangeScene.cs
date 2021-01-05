@@ -7,11 +7,16 @@ public class ChangeScene : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene("Scenes/GameScene");
+        Invoke("LoadGame", 0.3f);
     }
 
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    void LoadGame()
+    {
+        SceneManager.LoadScene("Scenes/GameScene");
     }
 }
