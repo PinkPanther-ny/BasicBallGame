@@ -11,7 +11,6 @@ public class CakeMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-	    Debug.Log("xxxxx");
         SetRandomPos();
     }
 
@@ -34,6 +33,16 @@ public class CakeMovement : MonoBehaviour
 					break;
 				}
 			}
+			
+			foreach (var badBall in GameObject.FindGameObjectsWithTag("Balls"))
+			{
+				if (Vector2.Distance(newPos, badBall.transform.position) < cleanRange)
+				{
+					isTooClose = true;
+					break;
+				}
+			}
+			
 		}
 
 		transform.position = newPos;

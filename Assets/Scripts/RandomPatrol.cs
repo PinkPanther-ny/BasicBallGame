@@ -23,14 +23,17 @@ public class RandomPatrol : MonoBehaviour
 	public float interpolationPeriod;
 
 	public GameObject collideEffect;
-	AudioSource _crash;
+
+	
+	[SerializeField] private AudioClip crash, redBall, cakeEaten, die;
+	AudioSource _audioSource;
 	
     // Start is called before the first frame update
     void Start()
     {
 	    _time = 0;
         _targetPosition = GetRandomPos();
-        _crash = GetComponents<AudioSource>()[1];
+        _audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -73,31 +76,34 @@ public class RandomPatrol : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision){
 		
-		if(!IsGamingScene()){return;}
+		if(!GameMaster.IsGamingScene()){return;}
 		
 		if(collision.CompareTag("BadBalls"))
 		{
 			_targetPosition = GetRandomPos();
+			_audioSource.PlayOneShot(redBall);
 		}
 		
 		if(collision.CompareTag("Balls") || collision.CompareTag("Cake"))
 		{
-			_crash.Play();
+
+			collision.gameObject.GetComponent<Collider2D>().enabled = false;
+			
+			GameMaster.PauseAll();
+			
+			Invoke(nameof(Lose), 2f);
 			Instantiate(collideEffect, transform.position, quaternion.identity);
 			
-			foreach (GameObject ball in (GameObject.FindGameObjectsWithTag("Balls")))
+			_audioSource.PlayOneShot(crash);
+			if (collision.CompareTag("Balls"))
 			{
-				ball.GetComponent<PlayerMovement>().enabled = false;
-				ball.GetComponent<DragAndDrop>().enabled = false;
+				_audioSource.PlayOneShot(die);
+			}else if (collision.CompareTag("Cake"))
+			{
+				_audioSource.PlayOneShot(cakeEaten);
 			}
 			
-			foreach (GameObject ball in GameObject.FindGameObjectsWithTag("BadBalls"))
-			{
-				ball.GetComponent<RandomPatrol>().enabled = false;
-				ball.GetComponent<DragAndDrop>().enabled = false;
-			}
 			
-			Invoke("Lose", 2f);
 			
 
 		}
@@ -114,9 +120,5 @@ public class RandomPatrol : MonoBehaviour
 		SceneManager.LoadScene("Scenes/LoseScene");
 	}
 
-	bool IsGamingScene()
-	{
-		// Used in menu scene
-		return SceneManager.GetActiveScene() != SceneManager.GetSceneByName("Scenes/GameScene");
-	}
+
 }

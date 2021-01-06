@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2188913223202457538}
   - component: {fileID: 5339134202793983984}
   - component: {fileID: -5075524382616776064}
+  - component: {fileID: 9078714739890742904}
   m_Layer: 0
   m_Name: Cake
   m_TagString: Cake
@@ -148,3 +149,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cleanRange: 3
+--- !u!95 &9078714739890742904
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5339134202793983983}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4544fd091e3674a4a8b89e55fc72790b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

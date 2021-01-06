@@ -5,16 +5,19 @@ public class DragAndDrop : MonoBehaviour
 	bool _moveAllowed;
 	Collider2D _col;
 	TrailRenderer _trail;
-	AudioSource _pop;
 
 	public GameObject selectionEffect;
+
+
+	[SerializeField] private AudioClip pop;
+	AudioSource _audioSource;
 	
     // Start is called before the first frame update
     private void Start()
     {
 	    _col = GetComponent<Collider2D>();
 	    _trail = GetComponent<TrailRenderer>();
-	    _pop = GetComponents<AudioSource>()[0];
+	    _audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -33,7 +36,7 @@ public class DragAndDrop : MonoBehaviour
 				    Collider2D touchCollider = Physics2D.OverlapPoint(touchPosition);
 				    if(_col == touchCollider)
 				    {
-					    _pop.Play();
+					    _audioSource.PlayOneShot(pop);
 					    Instantiate(selectionEffect, transform.position, Quaternion.identity);
 					    _moveAllowed = true;
 				    }

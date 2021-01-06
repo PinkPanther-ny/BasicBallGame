@@ -5,18 +5,34 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour
 {
+
     public void StartGame()
     {
-        Invoke("LoadGame", 0.3f);
+        Invoke(nameof(LoadGame), 0.4f);
     }
 
+    public void StartMenu()
+    {
+        Invoke(nameof(LoadMenu), 0.4f);
+    }
+    
     public void QuitGame()
     {
-        Application.Quit();
+        Invoke(nameof(Quit), 0.4f);
     }
 
     void LoadGame()
     {
-        SceneManager.LoadScene("Scenes/GameScene");
+        SceneManager.LoadScene("Scenes/Level1");
+    }
+    
+    void LoadMenu()
+    {
+        SceneManager.LoadScene("Scenes/Menu");
+    }
+
+    void Quit()
+    {
+        Application.Quit();
     }
 }

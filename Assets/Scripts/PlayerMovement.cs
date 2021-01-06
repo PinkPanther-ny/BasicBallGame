@@ -8,18 +8,23 @@ public class PlayerMovement : MonoBehaviour
 	
 	float _speed;
 	Vector2 _targetPosition;
-	private AudioSource _eat;
 	
 	public float secondsToMaxDifficulty;
 	
 	float _time;
 	public float interpolationPeriod;
 
+	
+	[SerializeField]
+	private AudioClip eat;
+
+	private AudioSource _audioSource;
+	
 	// Start is called before the first frame update
     void Start()
     {
 	    _time = 0;
-	    _eat = GetComponents<AudioSource>()[1];
+	    _audioSource = GetComponent<AudioSource>();
         _targetPosition = RandomPatrol.GetRandomPos();
     }
 
@@ -52,20 +57,20 @@ public class PlayerMovement : MonoBehaviour
 			    _targetPosition = RandomPatrol.GetRandomPos();
 		    }
     }
-
-
+    
 	private void OnTriggerEnter2D(Collider2D collision){
 		
 		
+		if(!GameMaster.IsGamingScene()){return;}
 		if(collision.CompareTag("Cake"))
 		{
-			_eat.Play();
+			_audioSource.PlayOneShot(eat);
+			
 			GameObject.Find("ScoreCanvas").GetComponent<GameMaster>().UpdateScore();
-			//Instantiate(collideEffect, transform.position, quaternion.identity);
 			GameObject.FindGameObjectWithTag("Cake").GetComponent<CakeMovement>().SetRandomPos();
 			
 		}
-		
+
 	}
 
 	float GetDifficultyPercent()
