@@ -9,6 +9,8 @@ TagManager:
   - BadBalls
   - Cake
   - Music
+  - LevelIdentifier
+  - CompleteLevel
   layers:
   - Default
   - TransparentFX

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -14,6 +15,11 @@ public class ChangeScene : MonoBehaviour
     public void StartMenu()
     {
         Invoke(nameof(LoadMenu), 0.4f);
+    }
+
+    public void Restart()
+    {
+        Invoke(nameof(RestartPrevious), 0.5f);
     }
     
     public void QuitGame()
@@ -35,4 +41,11 @@ public class ChangeScene : MonoBehaviour
     {
         Application.Quit();
     }
+
+    void RestartPrevious()
+    {
+        String previousLevel = GameObject.FindGameObjectWithTag("LevelIdentifier").GetComponent<LevelIdentifier>().levelName;
+        SceneManager.LoadScene(previousLevel);
+    }
+    
 }

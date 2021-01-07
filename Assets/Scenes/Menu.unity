@@ -673,7 +673,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectionEffect: {fileID: 7232234854052557568, guid: f90b27a05886c0b4ea37a925bf97dfa0,
     type: 3}
-  pop: {fileID: 0}
+  pop: {fileID: 8300000, guid: baea059951523024cbb177f8f8f68e9f, type: 3}
 --- !u!212 &179534999
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -713,7 +713,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1322592447
   m_SortingLayer: 3
-  m_SortingOrder: -3
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 165d3342a8a180f44a7fc245c9870c2b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1320,7 +1320,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectionEffect: {fileID: 7232234854052557568, guid: f90b27a05886c0b4ea37a925bf97dfa0,
     type: 3}
-  pop: {fileID: 0}
+  pop: {fileID: 8300000, guid: baea059951523024cbb177f8f8f68e9f, type: 3}
 --- !u!212 &873304744
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1360,7 +1360,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1322592447
   m_SortingLayer: 3
-  m_SortingOrder: -3
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: c882eb25e4f1a49418d19cf533574242, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1787,7 +1787,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectionEffect: {fileID: 7232234854052557568, guid: f90b27a05886c0b4ea37a925bf97dfa0,
     type: 3}
-  pop: {fileID: 0}
+  pop: {fileID: 8300000, guid: baea059951523024cbb177f8f8f68e9f, type: 3}
 --- !u!212 &1062232743
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1827,7 +1827,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1322592447
   m_SortingLayer: 3
-  m_SortingOrder: -3
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: e8dc77d97897b214f9295b1196ecc2ba, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2569,7 +2569,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1322592447
   m_SortingLayer: 3
-  m_SortingOrder: -3
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 65c46a42368e1c640bf7a0258241cde0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2609,7 +2609,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectionEffect: {fileID: 7232234854052557568, guid: f90b27a05886c0b4ea37a925bf97dfa0,
     type: 3}
-  pop: {fileID: 0}
+  pop: {fileID: 8300000, guid: baea059951523024cbb177f8f8f68e9f, type: 3}
 --- !u!1 &4390838795465064923
 GameObject:
   m_ObjectHideFlags: 0
