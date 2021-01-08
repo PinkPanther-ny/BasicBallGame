@@ -9,6 +9,11 @@ public class ChangeScene : MonoBehaviour
 
     public void StartGame()
     {
+        /*
+        if (GameObject.Find("LevelIdentifier") != null)
+        {
+            GameObject.FindWithTag("LevelIdentifier").GetComponent<LevelIdentifier>().UpdateLevelIdentifier(SceneManager.GetSceneByBuildIndex(SceneManager.GetActiveScene().buildIndex + 1));
+        }*/
         Invoke(nameof(LoadGame), 0.4f);
     }
 
@@ -44,8 +49,22 @@ public class ChangeScene : MonoBehaviour
 
     void RestartPrevious()
     {
-        String previousLevel = GameObject.FindGameObjectWithTag("LevelIdentifier").GetComponent<LevelIdentifier>().levelName;
-        SceneManager.LoadScene(previousLevel);
+        SceneManager.LoadScene(PlayerPrefs.GetString("LastLevel"));
     }
     
+    public void DeleteAllRecord()
+    {
+        PlayerPrefs.DeleteAll();
+    }
+
+    public void LoadSelectLevelSccene()
+    {
+        Invoke(nameof(LoadSelectLevel), 0.5f);
+    }
+    
+    void LoadSelectLevel()
+    {
+        SceneManager.LoadScene("Scenes/SelectLevel");
+    }
+
 }

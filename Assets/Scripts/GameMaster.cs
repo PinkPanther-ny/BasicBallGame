@@ -35,15 +35,7 @@ public class GameMaster : MonoBehaviour
         shortestTime.text = "Shortest time: " + SecondsToString(PlayerPrefs.GetInt(SceneManager.GetActiveScene().name));
         
     }
-    void OnGUI()
-    {
-        //Delete all of the PlayerPrefs settings by pressing this Button
-        if (GUI.Button(new Rect(100, 200, 200, 60), "Delete"))
-        {
-            PlayerPrefs.DeleteAll();
-        }
-    }
-    
+
     // Update is called once per frame
     public void UpdateScore()
     {
@@ -81,7 +73,7 @@ public class GameMaster : MonoBehaviour
     private void Update()
     {
         
-        Debug.Log(PlayerPrefs.GetInt(SceneManager.GetActiveScene().name).ToString());
+        //Debug.Log(PlayerPrefs.GetInt(SceneManager.GetActiveScene().name).ToString());
         if (IsWin())
         {
             PauseAll();

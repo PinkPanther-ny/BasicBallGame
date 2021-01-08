@@ -103,7 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minspeed: 0.7
   maxspeed: 1.93
-  secondsToMaxDifficulty: 12
+  secondsToMaxDifficulty: 9.17
   interpolationPeriod: 3
   collideEffect: {fileID: 777369701296120050, guid: 0b559f7916dab524d88f40b0267ce855,
     type: 3}

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelIdentifier : MonoBehaviour
@@ -8,16 +9,33 @@ public class LevelIdentifier : MonoBehaviour
     void Start()
     {
         levelName = SceneManager.GetActiveScene().name;
-        Debug.Log("Start! " + levelName);
     }
 
+    private static LevelIdentifier instance = null;
+    public static LevelIdentifier Instance {
+        get { return instance; }
+    }
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject.transform);
+        if (instance != null && instance != this) {
+            Destroy(this.gameObject);
+            return;
+        } else {
+            instance = this;
+        }
+        DontDestroyOnLoad(transform.gameObject);
+        levelName = SceneManager.GetActiveScene().name;
     }
+    
 
     public void UpdateLevelIdentifier(Scene scene)
     {
-        levelName = scene.name;
+        if (scene.name.StartsWith("Level"))
+        {
+            levelName = scene.name;
+        }else if (scene.name.StartsWith("CompleteAll"))
+        {
+            levelName = "Level1";
+        }
     }
 }
